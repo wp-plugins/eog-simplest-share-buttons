@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* CSS Document */
+
+[class^="fa-"]:before, [class*=" fa-"]:before {
+  font-family: "EOGFontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: none;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  font-size: 89%;
+  padding: 4px 0px 0px 4px;
+}
+ 
+/*** Social Media ****************************************************/
+.eog-social-bloque {
+  width: 100%;
+  display: inline-block;
+  word-wrap: normal!important;
+  clear: both;
+  margin: 1em 0;
+}
+
+.eog-social-right {
+  text-align: right;
+}
+
+.eog-social-left {
+  text-align: left;
+}
+
+.eog-social-circle i {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.eog-social-square i {
+  -webkit-border-radius: 0%;
+  -moz-border-radius: 0%;
+  border-radius: 0%;
+}
+
+.eog-social-rounded i {
+  -webkit-border-radius: 25%;
+  -moz-border-radius: 25%;
+  border-radius: 25%;
+}
+
+.eog-social-leaf i {
+  -webkit-border-top-left-radius: 50%;
+  -webkit-border-top-right-radius: 15%;
+  -webkit-border-bottom-right-radius: 50%;
+  -webkit-border-bottom-left-radius: 15%;
+
+  -moz-border-radius-topleft: 50%;
+  -moz-border-radius-topright: 15%;
+  -moz-border-radius-bottomright: 50%;
+  -moz-border-radius-bottomleft: 15%;
+
+  border-top-left-radius: 80%;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 80%;
+  border-bottom-left-radius: 0%;
+}
+
+.eog-social-media {
+	width:100%;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	list-style:none;
+}
+
+.eog-social-media i {
+  background: transparent;
+  width: 1em;
+  height: 1em;
+  padding: 0.2em 0.2em 0.2em 0.2em;
+  margin: 0 0 0.2em 0.2em;
+}
+
+.eog-social-media a {
+  display: inline;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: #FFF;
+  border: none;
+}
+
+.eog-social-media i {
+  opacity: 1;
+}
+
+.eog-social-media i:hover {
+  opacity: .5;
+}
+
+#facebook {
+	background:#3b5998;
+}
+
+#twitter {
+  background:#00a0d1;
+}
+
+#gplus {
+  background:#f00;
+}
+
+#whatsapp {
+	background:#21ab11;
+}
+
+.eog-social-rotate {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+
+  overflow:hidden;
+}
+
+.eog-social-rotate:hover
+{
+  -webkit-transform:rotate(360deg);
+  -moz-transform:rotate(360deg);
+  -o-transform:rotate(360deg);
+}
