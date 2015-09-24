@@ -4,17 +4,40 @@
 // Function that adds share buttons to post content //
 //////////////////////////////////////////////////////
 function eog_simplestsharebuttons_content($content) {
-    require_once 'Mobile_Detect.php';
+    if(!class_exists('Mobile_Detect')) {
+        require_once 'Mobile_Detect.php';
+    }
     $options = get_option( 'eog_ssb_settings' );
     $detect = new Mobile_Detect;
     $esmovil = ( $detect->isMobile() && !$detect->isTablet() );
 
-    $mostrarsocial = ( $options['show_fb'] || $options['show_tw'] || $options['show_gp'] || ( $options['show_wa'] && $esmovil ) );
+    $show_fb = isset( $options['show_fb'] ) && ( $options['show_fb'] );
+    $show_tw = isset( $options['show_tw'] ) && ( $options['show_tw'] );
+    $show_gp = isset( $options['show_gp'] ) && ( $options['show_gp'] );
+    $show_wa = isset( $options['show_wa'] ) && ( $options['show_wa'] );
+    $mostrarsocial = ( $show_fb || $show_tw || $show_gp || ( $show_wa && $esmovil ) );
 
     $size = $options['size'];
     $alignment = $options['alignment'];
     $shape = $options['shape'];
-    $animation = $options['animation'];
+
+    if ( isset( $options['animation'] ) && ( $options['animation'] != '' ) ) {
+        $animation = 'eog-social-' . $options['animation'];
+    } else {
+        $animation = '';
+    }
+
+    if ( isset( $options['filling'] ) && ( $options['filling'] != '' ) ) {
+        $filling = 'eog-social-' . $options['filling'];
+    } else {
+        $filling = '';
+    }
+
+    if ( isset( $options['atenuation'] ) && ( $options['atenuation'] = '1' ) ) {
+        $atenuation = 'eog-social-atenuate';
+    } else {
+        $atenuation = '';
+    }
 
     $socialstring = "";
 
@@ -51,35 +74,35 @@ function eog_simplestsharebuttons_content($content) {
 
         if ( $mostrarsocial ) {
             $socialstring = '
-                            <div class="eog-social-bloque eog-social-' . $alignment . ' eog-social-' . $shape . '">
+                            <div class="eog-social-bloque eog-social-' . $alignment . ' eog-social-' . $shape . ' eog-social-size-' . $size . '"">
                                 <div class="eog-social-media">';
         }
-        if ( $options['show_fb'] ) {
+        if ( $show_fb ) {
             $socialstring .= '
-                                    <a href="http://www.facebook.com/sharer/sharer.php?u=' . get_permalink() . '" rel="nofollow" title="' . __( 'Share in Facebook', 'eog-simplestsharebuttons' ) . '" target="_blank" onclick="eog_social_window(\'http://www.facebook.com/sharer/sharer.php?u=' . get_permalink() . '\', \'facebook\'); return false;">
-                                        <i class="fa fa-size-' . $size . ' fa-facebook eog-social-' . $animation . '" id="facebook">
-                                        </i>
+                                    <a href="http://www.facebook.com/sharer/sharer.php?u=' . get_permalink() . '" rel="nofollow" title="' . __( 'Share in Facebook', 'eog-simplestsharebuttons' ) . '" target="_blank" onclick="eog_social_window(\'http://www.facebook.com/sharer/sharer.php?u=' . get_permalink() . '\', \'facebook\'); return false;" class="' . $animation . ' ' . $filling . ' ' . $atenuation . '" id="facebook">
+                                        <i class="fa fa-size-' . $size . ' fa-facebook">
+                                        </i>' . ( $animation == 'eog-social-expand' ? "<span class=\"eog-social-shownames\">Facebook</span>" : "" ) . '
                                     </a>';
         }
-        if ( $options['show_tw'] ) {
+        if ( $show_tw ) {
             $socialstring .= '
-                                    <a href="' . get_permalink() . '" rel="nofollow" title="' . __( 'Share in Twitter', 'eog-simplestsharebuttons' ) . '" target="_blank" onclick="eog_social_window(\'https://twitter.com/intent/tweet?text=' . urlencode( get_the_title() ) . '&url=' . $shortUrl . '&counturl=' . get_permalink() . '&related=PequeenMallorca&via=PequeenMallorca\', \'twitter\'); return false;">
-                                        <i class="fa fa-size-' . $size . ' fa-twitter eog-social-' . $animation . '" id="twitter">
-                                        </i>
+                                    <a href="' . get_permalink() . '" rel="nofollow" title="' . __( 'Share in Twitter', 'eog-simplestsharebuttons' ) . '" target="_blank" onclick="eog_social_window(\'https://twitter.com/intent/tweet?text=' . urlencode( get_the_title() ) . '&url=' . $shortUrl . '&counturl=' . get_permalink() . '&related=PequeenMallorca&via=PequeenMallorca\', \'twitter\'); return false;" class="' . $animation . ' ' . $filling . ' ' . $atenuation . '" id="twitter">
+                                        <i class="fa fa-size-' . $size . ' fa-twitter">
+                                        </i>' . ( $animation == 'eog-social-expand' ? "<span class=\"eog-social-shownames\">Twitter</span>" : "" ) . '
                                     </a>';
         }
-        if ( $options['show_gp'] ) {
+        if ( $show_gp ) {
             $socialstring .= '
-                                    <a href="https://plus.google.com/share?url=' . get_permalink() . '" rel="nofollow" title="' . __( 'Share in Google+', 'eog-simplestsharebuttons' ) . '" target="_blank" onclick="eog_social_window(\'https://plus.google.com/share?url=' . get_permalink() . '\', \'gplus\'); return false;">
-                                        <i class="fa fa-size-' . $size . ' fa-google-plus eog-social-' . $animation . '" id="gplus">
-                                        </i>
+                                    <a href="https://plus.google.com/share?url=' . get_permalink() . '" rel="nofollow" title="' . __( 'Share in Google+', 'eog-simplestsharebuttons' ) . '" target="_blank" onclick="eog_social_window(\'https://plus.google.com/share?url=' . get_permalink() . '\', \'gplus\'); return false;" class="' . $animation . ' ' . $filling . ' ' . $atenuation . '" id="gplus">
+                                        <i class="fa fa-size-' . $size . ' fa-google-plus">
+                                        </i>' . ( $animation == 'eog-social-expand' ? "<span class=\"eog-social-shownames\">Google+</span>" : "" ) . '
                                     </a>';
         }
-        if ( $options['show_wa'] && $esmovil ){
+        if ( $show_wa && $esmovil ){
             $socialstring .= '
-                                    <a href="whatsapp://send?text=' . rawurlencode( get_the_title() . ' - ' . $shortUrl ) . '" rel="nofollow" title="' . __( 'Share in WhatsApp', 'eog-simplestsharebuttons' ) . '">
-                                        <i class="fa fa-size-' . $size . ' fa-whatsapp eog-social-' . $animation . '" id="whatsapp">
-                                        </i>
+                                    <a href="whatsapp://send?text=' . rawurlencode( get_the_title() . ' - ' . $shortUrl ) . '" rel="nofollow" title="' . __( 'Share in WhatsApp', 'eog-simplestsharebuttons' ) . '" class="' . $animation . ' ' . $filling . ' ' . $atenuation . '" id="whatsapp">
+                                        <i class="fa fa-size-' . $size . ' fa-whatsapp">
+                                        </i>' . ( $animation == 'eog-social-expand' ? "<span class=\"eog-social-shownames\">WhatsApp</span>" : "" ) . '
                                     </a>
             ';
         }

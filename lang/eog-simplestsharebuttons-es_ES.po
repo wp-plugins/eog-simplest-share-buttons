@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: eog-simplestsharebuttons\n"
-"POT-Creation-Date: 2015-08-04 10:52+0200\n"
-"PO-Revision-Date: 2015-08-04 10:53+0200\n"
+"POT-Creation-Date: 2015-08-21 04:29+0200\n"
+"PO-Revision-Date: 2015-08-21 04:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -141,45 +141,77 @@ msgid "Choose the icons shape"
 msgstr "Elija la forma de los iconos"
 
 #: ../includes/admin.php:160
+msgid "Atenuation"
+msgstr "Atenuación"
+
+#: ../includes/admin.php:167
+msgid "Atenuate colors of icons when hover"
+msgstr "Atenuar los colores de los iconos al pasar el cursor por encima"
+
+#: ../includes/admin.php:172
 msgid "Animation"
 msgstr "Animación"
 
-#: ../includes/admin.php:167
+#: ../includes/admin.php:179 ../includes/admin.php:195
 msgid "None"
 msgstr "Ninguno"
 
-#: ../includes/admin.php:168
+#: ../includes/admin.php:180
 msgid "Rotation"
 msgstr "Rotación"
 
-#: ../includes/admin.php:170
-msgid "Choose the animation of the icons when hover"
-msgstr "Elegir la animación de los iconos al pasar el ratón por encima"
+#: ../includes/admin.php:181
+msgid "Expand text"
+msgstr "Expandir texto"
 
-#: ../includes/admin.php:244
+#: ../includes/admin.php:183
+msgid "Choose the animation of the icons when hover"
+msgstr "Elegir la animación de los iconos al pasar el cursor por encima"
+
+#: ../includes/admin.php:188
+msgid "Filling"
+msgstr "Relleno"
+
+#: ../includes/admin.php:196
+msgid "Color"
+msgstr "Color"
+
+#: ../includes/admin.php:198
+msgid "Choose the filling style of the buttons"
+msgstr "Elegir el tipo de relleno de los botones"
+
+#: ../includes/admin.php:203
+msgid "Show names"
+msgstr "Mostrar nombres"
+
+#: ../includes/admin.php:210
+msgid "Show names of social networks right to the icon"
+msgstr "Mostrar los nombres de las redes sociales a la derecha del icono"
+
+#: ../includes/admin.php:285
 msgid "Save options"
 msgstr "Guardar cambios"
 
-#: ../includes/admin.php:256
+#: ../includes/admin.php:297
 msgid "Settings"
 msgstr "Configuración"
 
-#: ../includes/core.php:59
+#: ../includes/core.php:86
 msgid "Share in Facebook"
 msgstr "Compartir en Facebook"
 
-#: ../includes/core.php:66
+#: ../includes/core.php:93
 msgid "Share in Twitter"
 msgstr "Compartir en Twitter"
 
-#: ../includes/core.php:73
+#: ../includes/core.php:100
 msgid "Share in Google+"
 msgstr "Compartir en Google+"
 
-#: ../includes/core.php:80
+#: ../includes/core.php:107
 msgid "Share in WhatsApp"
 msgstr "Compartir en WhatsApp"
 
-#. Description of the plugin/theme
+#: Description of the plugin/theme
 msgid "Shows simple share buttons on blog posts"
 msgstr "Muestra botones simples de compartir en las entradas del blog"

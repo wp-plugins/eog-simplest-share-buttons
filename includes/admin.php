@@ -156,6 +156,18 @@ function eog_simplestsharebuttons_settings_init() {
         )
     );
     add_settings_field(
+        'atenuation',
+        __( 'Atenuation', 'eog-simplestsharebuttons' ),
+        'render_checkbox',
+        'eog_ssb_options',
+        'eog_ssb_section_visual',
+        array(
+            'label_for' => '',
+            'setting' => 'atenuation',
+            'description' => __( 'Atenuate colors of icons when hover' , 'eog-simplestsharebuttons' )
+        )
+    );
+    add_settings_field(
         'animation',
         __( 'Animation', 'eog-simplestsharebuttons' ),
         'render_select',
@@ -164,10 +176,26 @@ function eog_simplestsharebuttons_settings_init() {
         array(
             'setting' => 'animation',
             'values' => array(
-                'none' => __( 'None', 'eog-simplestsharebuttons' ),
+                '' => __( 'None', 'eog-simplestsharebuttons' ),
                 'rotate' => __( 'Rotation', 'eog-simplestsharebuttons' ),
+                'expand' => __( 'Expand text', 'eog-simplestsharebuttons' ),
             ),
             'description' => __( 'Choose the animation of the icons when hover' , 'eog-simplestsharebuttons' )
+        )
+    );
+    add_settings_field(
+        'filling',
+        __( 'Filling', 'eog-simplestsharebuttons' ),
+        'render_select',
+        'eog_ssb_options',
+        'eog_ssb_section_visual',
+        array(
+            'setting' => 'filling',
+            'values' => array(
+                '' => __( 'None', 'eog-simplestsharebuttons' ),
+                'color' => __( 'Color', 'eog-simplestsharebuttons' ),
+            ),
+            'description' => __( 'Choose the filling style of the buttons' , 'eog-simplestsharebuttons' )
         )
     );
 //    add_settings_field( 'apikey', __( 'Google API key for shorten URL', 'eog-simplestsharebuttons' ), 'eog_ssb_options',  );
@@ -192,7 +220,7 @@ function eog_ssb_function_section ( $arg ) {
 function render_checkbox ( $args ) {
     $options = get_option( 'eog_ssb_settings' );
 ?>
-    <input id='<?php echo $args['setting']; ?>' type='checkbox' name='eog_ssb_settings[<?php echo $args['setting']; ?>]' <?php checked( $options[$args['setting']], 1 ); ?> value='1'>
+    <input id='<?php echo $args['setting']; ?>' type='checkbox' name='eog_ssb_settings[<?php echo $args['setting']; ?>]' <?php if ( isset( $options[$args['setting']] ) ) { checked( $options[$args['setting']], 1 ); } ?> value='1'>
     <label for="<?php echo $args['setting']; ?>"><?php echo $args['label_for']; ?></label>
 <?php if ( $args['description'] ) { ?>
     <p class="description"><?php echo $args['description']; ?></p>
@@ -207,7 +235,7 @@ function render_select ( $args ) {
 <?php
     foreach ( $args['values'] as $value => $display ) {
 ?>
-        <option value='<?php echo $value; ?>' <?php selected( $options[$args['setting']], $value ); ?>><?php echo $display; ?></option>
+        <option value='<?php echo $value; ?>' <?php if ( isset( $options[$args['setting']] ) ) { selected( $options[$args['setting']], $value ); } ?>><?php echo $display; ?></option>
 <?php
     }
 ?>

@@ -3,7 +3,7 @@
 Plugin Name: EOG Simplest Share Buttons
 Description: Shows simple share buttons on blog posts
 Author: El Ojo Grafico
-Version: 1.0
+Version: 1.1
 Author URI: http://elojografico.net
 Text Domain: eog-simplestsharebuttons
 Domain Path: /lang/
@@ -48,7 +48,10 @@ function eog_simplestsharebuttons_activate() {
         'size' => '1',
         'alignment' => 'left',
         'shape' => 'circle',
-        'animation' => 'none',
+        'animation' => '',
+        'atenuation' => '1',
+        'filling' => 'color',
+        'shownames' => '1',
     );
     update_option( 'eog_ssb_settings', $opciones );
 }
